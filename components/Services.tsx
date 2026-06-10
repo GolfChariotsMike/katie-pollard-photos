@@ -22,7 +22,7 @@ const services = [
   {
     title: "Maternity",
     description: "Honouring the beautiful journey of pregnancy with stunning portraits that celebrate this magical chapter.",
-    image: "https://images.unsplash.com/photo-1537365587684-f490102e1225?w=800",
+    image: "https://images.unsplash.com/photo-1584559582128-b8be739912e1?w=800",
     emoji: "🤰",
   },
   {

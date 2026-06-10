@@ -2,17 +2,17 @@ import Image from "next/image";
 
 // Mix of Katie's real photos + Unsplash stock
 const galleryImages = [
-  { src: "/photos/photo_01.jpg", alt: "Photography session", span: "col-span-1 row-span-2" },
-  { src: "https://images.unsplash.com/photo-1511895426328-dc8714191011?w=800", alt: "Family at beach" },
+  { src: "https://images.unsplash.com/photo-1511895426328-dc8714191011?w=800", alt: "Family at beach", span: "col-span-1 row-span-2" },
   { src: "https://images.unsplash.com/photo-1529636798458-92182e662485?w=800", alt: "Engagement couple" },
-  { src: "/photos/photo_02.jpg", alt: "Photography session", span: "col-span-1 row-span-2" },
-  { src: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=800", alt: "Newborn" },
-  { src: "https://images.unsplash.com/photo-1537365587684-f490102e1225?w=800", alt: "Maternity" },
   { src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?w=800", alt: "Wedding" },
-  { src: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800", alt: "Beach portrait", span: "col-span-2" },
+  { src: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=800", alt: "Newborn", span: "col-span-1 row-span-2" },
+  { src: "https://images.unsplash.com/photo-1584559582128-b8be739912e1?w=800", alt: "Maternity portrait" },
   { src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800", alt: "Children at beach" },
+  { src: "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?w=800", alt: "Beach portrait", span: "col-span-2" },
   { src: "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=800", alt: "Family sunset" },
   { src: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800", alt: "Pet portrait" },
+  { src: "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=800", alt: "Maternity glow" },
+  { src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800", alt: "Portrait session" },
 ];
 
 export default function Gallery() {
