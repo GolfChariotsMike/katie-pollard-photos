@@ -24,3 +24,32 @@ body {
 h1, h2, h3, h4 {
   font-family: 'Playfair Display', serif;
 }
+
+/* Ken Burns effect on hero background */
+@keyframes kenBurns {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+.ken-burns {
+  animation: kenBurns 20s ease-out forwards;
+  will-change: transform;
+}
+
+/* Shimmer sweep on submit button */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%) skewX(-12deg); }
+  100% { transform: translateX(250%) skewX(-12deg); }
+}
+.shimmer-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: translateX(-100%) skewX(-12deg);
+}
+.shimmer-btn:hover::after {
+  animation: shimmer 0.7s ease-out;
+}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const sessionTypes = [
   "Engagement",
@@ -33,8 +34,13 @@ export default function Contact() {
     <section id="contact" className="py-24 md:py-32 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16">
-          {/* Left — info */}
-          <div>
+          {/* Left — info, fade up */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
+          >
             <p className="text-xs tracking-[0.4em] uppercase text-[#c9a28d] mb-4">Let's Connect</p>
             <h2 className="font-serif text-4xl md:text-5xl font-normal text-[#3d2e26] mb-6 leading-tight">
               Book Your<br />
@@ -103,35 +109,55 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right — form */}
-          <div>
+          {/* Right — form, fade up with slight delay */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-xs tracking-widest uppercase text-[#7a5c4e] mb-2">Your Name</label>
+              {/* Name */}
+              <div className="relative">
                 <input
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full border-b border-[#e8ddd0] bg-transparent py-3 text-[#3d2e26] font-light placeholder-[#c4b4a8] focus:outline-none focus:border-[#c9a28d] transition-colors"
+                  className="peer w-full border-b border-[#e8ddd0] bg-transparent pt-6 pb-2 text-[#3d2e26] font-light placeholder-transparent focus:outline-none focus:border-[#c9a28d] transition-colors"
                   placeholder="Jane Smith"
+                  id="name"
                 />
+                <label
+                  htmlFor="name"
+                  className="absolute left-0 top-0 text-xs tracking-widest uppercase text-[#7a5c4e] transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:tracking-normal peer-placeholder-shown:text-[#c4b4a8] peer-focus:top-0 peer-focus:text-xs peer-focus:tracking-widest peer-focus:text-[#c9a28d]"
+                >
+                  Your Name
+                </label>
               </div>
 
-              <div>
-                <label className="block text-xs tracking-widest uppercase text-[#7a5c4e] mb-2">Email Address</label>
+              {/* Email */}
+              <div className="relative">
                 <input
                   type="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full border-b border-[#e8ddd0] bg-transparent py-3 text-[#3d2e26] font-light placeholder-[#c4b4a8] focus:outline-none focus:border-[#c9a28d] transition-colors"
+                  className="peer w-full border-b border-[#e8ddd0] bg-transparent pt-6 pb-2 text-[#3d2e26] font-light placeholder-transparent focus:outline-none focus:border-[#c9a28d] transition-colors"
                   placeholder="jane@example.com"
+                  id="email"
                 />
+                <label
+                  htmlFor="email"
+                  className="absolute left-0 top-0 text-xs tracking-widest uppercase text-[#7a5c4e] transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:tracking-normal peer-placeholder-shown:text-[#c4b4a8] peer-focus:top-0 peer-focus:text-xs peer-focus:tracking-widest peer-focus:text-[#c9a28d]"
+                >
+                  Email Address
+                </label>
               </div>
 
+              {/* Session type */}
               <div>
                 <label className="block text-xs tracking-widest uppercase text-[#7a5c4e] mb-2">Session Type</label>
                 <select
@@ -146,20 +172,28 @@ export default function Contact() {
                 </select>
               </div>
 
-              <div>
-                <label className="block text-xs tracking-widest uppercase text-[#7a5c4e] mb-2">Tell Me About Your Session</label>
+              {/* Message */}
+              <div className="relative">
                 <textarea
                   rows={5}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full border-b border-[#e8ddd0] bg-transparent py-3 text-[#3d2e26] font-light placeholder-[#c4b4a8] focus:outline-none focus:border-[#c9a28d] transition-colors resize-none"
-                  placeholder="Share any details about your vision, preferred dates, location ideas..."
+                  className="peer w-full border-b border-[#e8ddd0] bg-transparent pt-6 pb-2 text-[#3d2e26] font-light placeholder-transparent focus:outline-none focus:border-[#c9a28d] transition-colors resize-none"
+                  placeholder="Share any details..."
+                  id="message"
                 />
+                <label
+                  htmlFor="message"
+                  className="absolute left-0 top-0 text-xs tracking-widest uppercase text-[#7a5c4e] transition-all duration-300 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:tracking-normal peer-placeholder-shown:text-[#c4b4a8] peer-focus:top-0 peer-focus:text-xs peer-focus:tracking-widest peer-focus:text-[#c9a28d]"
+                >
+                  Tell Me About Your Session
+                </label>
               </div>
 
+              {/* Submit — shimmer button */}
               <button
                 type="submit"
-                className="w-full bg-[#c9a28d] text-white text-sm font-medium tracking-[0.2em] uppercase py-4 hover:bg-[#b8907a] transition-colors duration-300"
+                className="shimmer-btn w-full bg-[#c9a28d] text-white text-sm font-medium tracking-[0.2em] uppercase py-4 hover:bg-[#b8907a] transition-colors duration-300 relative overflow-hidden"
               >
                 Send Enquiry
               </button>
@@ -168,7 +202,7 @@ export default function Contact() {
                 I'll respond within 24 hours ✦
               </p>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,26 +1,46 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function About() {
   return (
     <section id="about" className="py-24 md:py-32 bg-[#faf6f1]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          {/* Image */}
-          <div className="relative">
+          {/* Image — slide in from left */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <div className="absolute -top-4 -left-4 w-full h-full border border-[#c9a28d]/30" />
             <div className="relative overflow-hidden aspect-[4/5]">
-              <Image
-                src="/photos/profile.jpg"
-                alt="Katie Pollard"
-                fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
+              <motion.div
+                className="w-full h-full"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Image
+                  src="/photos/profile.jpg"
+                  alt="Katie Pollard"
+                  fill
+                  className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                />
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Text */}
-          <div>
+          {/* Text — slide in from right */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 }}
+          >
             <p className="text-xs tracking-[0.4em] uppercase text-[#c9a28d] mb-4">About Katie</p>
             <h2 className="font-serif text-4xl md:text-5xl font-normal text-[#3d2e26] mb-8 leading-tight">
               Stories told with<br />
@@ -46,7 +66,7 @@ export default function About() {
             >
               Get In Touch
             </a>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
